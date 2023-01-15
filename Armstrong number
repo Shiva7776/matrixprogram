@@ -1,0 +1,21 @@
+Write a Program to find Armstrong number
+#include<stdio.h>
+int main(){
+    int num,sum=0,temp=0,rem;
+    printf("Enter the Number");
+    scanf("%d",&num);
+    temp=num;
+    while (num>0)
+    {
+        rem=num%10;
+        sum=sum+(rem*rem*rem);
+num=num/10;
+    }if (sum==temp)
+    {
+        printf("The Number iS Armstrong\n");
+    }else{
+        printf("Number is not Arrmstrong");
+    }
+    
+    
+}
