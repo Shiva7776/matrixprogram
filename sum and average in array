@@ -1,0 +1,27 @@
+Write a C program to find the sum and average of n integer numbers using array
+#include<stdio.h>
+int main(){
+    int i ,n,sum=0,a[100];
+    float avg=0;
+    printf("Enter the Size of the matrix \n");
+    scanf("%d",&n);
+    printf("Enter the Element of the array");
+    for ( i = 0; i < n; i++)
+    {
+    scanf("%d",&a[i]);
+    }
+    printf("The array is \t");
+    for ( i = 0; i < n; i++)
+    {
+        printf("%d\t",a[i]);
+    }
+    for ( i = 0; i <n; i++)
+    {
+        sum=sum+a[i];
+    }
+    
+    avg=sum/n;
+    printf("The sumo element is %d\n",sum);
+    printf("The avg of the element is %f",avg);
+    
+}
