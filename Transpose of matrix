@@ -1,0 +1,31 @@
+Write a program for transpose of the matrix
+#include<stdio.h>
+int main(){
+    int i, j;int a[3][2];
+    printf("Enter the Elements of the Matrix\n");
+    for ( i = 0; i<3; i++)
+    {
+        for (j=0;j<2;j++)
+        {
+        scanf("%d",&a[i][j]);
+        }
+        
+    }
+    printf("The Matrix Before Transpose\n");
+     for ( i = 0; i <3; i++)
+    {
+        for (j=0;j<2;j++)
+        {
+        printf("%d\t",a[i][j]);
+        }
+        printf("\n");
+    }printf("The Matrix after Transpose\n");
+     for ( i=0;i<2;i++)
+    {
+        for (j=0;j<3;j++)
+        {
+        printf("%d\t",a[j][i]);
+        }
+        printf("\n");
+    }
+}
