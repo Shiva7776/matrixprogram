@@ -1,0 +1,198 @@
+/*Author Name Shivam Singh date :18 feb 2023
+Operation on the Linked list*/
+#include<stdio.h>
+#include<stdlib.h>
+#include<process.h>
+struct node{
+int data;
+struct node * next;
+}*first =NULL,*Head;
+/*creating An node structure Having Value and the address of the next pointer*/
+struct dNode{
+struct node *perv;
+int data;
+struct node*dnext;
+}*head=NULL;/*Creating an Structure of the Doubly linked List*/
+int create(int A[],int n){
+int i;
+struct node *t ,*last;/*creating two pointer one is temp and another is last
+indicating */
+first=(struct node *)malloc(sizeof(struct node));/*Here creating memory inside the
+heap or creating Dynamic memory Allocation */
+first->data=A[0];/*Entering the Data inside the Frist node*/
+first->next=NULL;
+last=first;/*Assigning the last pointer*/
+for ( i = 1; i < n; i++)
+{
+t=(struct node *)malloc(sizeof(struct node));
+t->data=A[i];
+t->next=NULL;
+last->next=t;
+last=t;
+}/*Accessing all element inside the Array to Linked list */
+}/*Create function is used to MAke the linked list*/
+int display(struct node *p){
+while (p!=0)
+{
+printf("%d\t",p->data);
+p=p->next;
+}
+}/*Diplay function is used two diplay the Linked list*/
+int Sum(struct node *p){
+int sum=0;
+while (p!=0)
+{
+sum=sum+p->data;
+p=p->next;
+}
+printf("The Sum of the Element is %d",sum);
+}/*Sum funtion is Used to Sum Alll the Element of the All Element */
+int Search(struct node *p,int key){
+while (p!=0)
+{ if (key==p->data)
+{
+printf("%d key is Found %d",key,&p->data);
+}
+p=p->next;
+}
+}/*Funtion is Used To Search A particular Value inside the Linked list*/
+int MaxValue(struct node *p){
+int max=-32768;
+while (p!=0)
+{
+if (max<p->data)
+{
+max=p->data;
+}
+p=p->next;
+}
+printf("The MAximum Value is %d",max);
+}/*Function is Used to Find the Maximum Value inside the Linked List*/
+int MinValue(struct node *p){
+int min=32767;
+while (p!=0)
+{
+if (min<p->data)
+{
+min=p->data;
+}
+p=p->next;
+}
+printf("The Minimum Value is %d",min);
+}/*Function is Used To Find the Minimum Value inside the Linked List*/
+int nodeCount(struct node *p){
+int count=0;
+while (p!=0)
+{
+count=count+1;
+p=p->next;
+}
+printf("The Number of nodes Are %d",count);
+}/* This Function is used to count the Number of nodes inside the Linked list*/
+int nodeInsert(int pos,int x){
+struct node *t,*p;
+if (pos==0)
+{
+t=(struct node *)malloc(sizeof(struct node));
+t->data=x;
+t->next=first;
+first=t;
+}else if (pos>0)
+{int i;
+p=first;
+for ( i =0; i <pos-1; i++)
+{
+p=p->next;
+}
+if (p)
+{
+t= t=(struct node *)malloc(sizeof(struct node));
+t->data=x;
+t->next=p->next;
+p->next =t;
+}
+}
+}/*This Function is used To Insert the Node At Any position inside the Linked list*/
+int nodeDeletion(struct node *p,int pos){
+struct node *q=NULL;int i;
+p=first;int x;
+if (pos==1)
+{
+first=first->next;
+x=p->data;
+free(p);
+}else if (pos>1)
+{
+for ( i = 0; i < pos-1; i++)
+{
+q=p;
+p=p->next;
+}q->next=p->next;
+x=p->data;
+free(p);
+}/*This function is used to Delete the node from Linked list*/
+}int ShortingCheck(struct node *p){
+p=first;
+int x = -65535;
+while (p!=0)
+{
+if (p->data<x)
+{
+printf("Linkedlis is not Shorted");
+exit(1);
+}
+x=p->data;
+p=p->next;
+}
+printf("Linked list is Shorted");
+}/*This Function is used to Checkk Whether the Linked list is Shorted or not*/
+int duplicatedeltion(struct node *p){
+struct node *q=p->next;
+while (q!=0)
+{
+p=q;
+q=q->next;
+if (p->data!=q->data)
+{
+p=q;
+q=q->next;
+}else{
+p->next=q->next;
+free(q);
+q=p->next;
+}
+}
+}/*This Function is Used to delete the duplicate data form the likedlist*/
+int circular(int A[],int n){
+int i;
+struct node *t,*last;
+Head=(struct node *)malloc(sizeof(struct node));
+Head->data=A[0];
+Head->next=Head;
+last=Head;
+for ( i = 1; i <n; i++)
+{
+t=(struct node *)malloc(sizeof(struct node));
+t->data=A[i];
+t->next=last->next;
+last->next=t;
+last=t;
+}
+}/*This function is used to create the cirulcar linked list*/
+int cirulardisplay(struct node * p){
+do
+{
+printf("%d\t",p->data);
+p=p->next;
+} while (p!=Head);
+}/*This Function is used to diplay the Circular Linked list*/
+int RcirculaarDisplay(struct node *p){
+int flag=0;
+if (p!=Head || flag==0)
+{ flag =1;
+printf("%d\t",p->data);
+RcirculaarDisplay(p->next);
+}
+flag =0;
+}/*This Function is used to display Circular Linked list in Recursivly*/
+int insertCircular(struct node 
